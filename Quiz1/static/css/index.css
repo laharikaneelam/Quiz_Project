@@ -1,0 +1,21 @@
+body{
+  background-image: url('image2.jpg');
+  background-position: center;
+  background-size:100% 100%;
+  background-repeat: no-repeat;
+  padding-left: 100px;
+  text-align: center;
+  font-size: 20px;
+  color: #ed0cde;
+}
+#butt{
+  background-color:#ed0cde;
+  border-radius:20px;
+  height:45px;
+  width:110px;
+  align-self: center;
+  color:white;
+}
+h1{
+  text-decoration: underline;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Quiz </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {% load static %}
+    <script src = "{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+  </head>
+  <body>
+    <h1>Quiz</h1>
+    <p>**Every correct answer gives you 3 points**</p>
+    <p>**Every wrong answers has 1 negative point**</p><br>
+    <div style="padding-left:30px">
+      <form name="quiz" onsubmit="return submitAnswers(answers=[{% for i in Exam %}'{{i.Corrans}}',{% endfor %} ])">
+        {% for i in Exam %}
+          <h3>{{i.id}} )  {{i.Question}} ?</h3>
+          <input type="radio" name="q{{ i.id }}"  class="rb" value="{{i.Option1}}">{{i.Option1}}<br><br>
+          <input type="radio" name="q{{ i.id }}"  class="rb" value="{{i.Option2}}">{{i.Option2}}<br><br>
+          <input type="radio" name="q{{ i.id }}"  class="rb" value="{{i.Option3}}">{{i.Option3}}<br><br>
+          <input type="radio" name="q{{ i.id }}"  class="rb" value="{{i.Option4}}">{{i.Option4}}<br><br>
+          <p class="rb" id="{{i.id}}" style="display: none;color:#50ad34;">{{i.Corrans}}</p><br><br>
+          {% endfor %}
+          <input id="butt" type="submit" value="Click for results">
+      </form>
+    </div>
+    <script>
+      $(document).ready(function(){
+      $("#butt").click(function(){
+      $(".rb").show();
+      $(".rb").attr("disabled",true);
+      });
+      });
+  </script>
+  </body>
+</html>
